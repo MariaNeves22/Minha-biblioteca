@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <img src="/uploads/logo.png" alt="Logo do Projeto" class="logo" />
+        <h1>Bem-vindo, <%= userName %>!</h1> 
+        <a href="/logout" class="btn">Logout</a> 
+    </header>
+    <main>
+        <p>Esta é sua página de perfil. Você não pode gerenciar usuários.</p>
+        
+        <h2>Livros Registrados</h2>
+        <table class="book-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Gênero</th>
+                    <th>Ano</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% books.forEach(book => { %>
+                <tr>
+                    <td><%= book.id %></td>
+                    <td><%= book.titulo %></td>
+                    <td><%= book.autor %></td>
+                    <td><%= book.genero %></td>
+                    <td><%= book.ano %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </main>
+    <p><a href="/dashboard">Voltar</a></p>
+    <footer>
+        <p>&copy; 2024 Meu Projeto de Livros</p>
+    </footer>
+</body>
+</html>

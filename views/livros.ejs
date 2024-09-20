@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros Cadastrados</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <img src="/img/logo.png" alt="Logo do Projeto" class="logo" />
+        <h2>Livros Cadastrados</h2>
+        <a href="/dashboard" class="btn">Voltar</a>
+    </header>
+    <main>
+        <table class="livros-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Gênero</th>
+                    <th>Descrição</th>
+                    <th>Data de Lançamento</th>
+                    <th>Imagem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% livros.forEach(livro => { %>
+                    <tr>
+                        <td><%= livro.id_livro %></td>
+                        <td><%= livro.titulo %></td>
+                        <td><%= livro.autor %></td>
+                        <td><%= livro.genero %></td>
+                        <td><%= livro.descricao %></td>
+                        <td><%= livro.data_lanc %></td>
+                        <td>
+                            <% if (livro.imagem) { %>
+                                <img src="/uploads/<%= livro.imagem %>" class="livro-imagem" alt="Capa do livro: <%= livro.titulo %>">
+                            <% } else { %>
+                                Sem imagem
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </main>
+    <p><a href="/dashboard">Voltar</a></p>
+    <footer>
+        <p>&copy; 2024 Meu Projeto de Livros</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <img src="/uploads/logo.png" alt="Logo" class="logo" />
+        <h2>LOGIN - Acessar o Sistema</h2>
+    </header>
+    <main>
+        <form action="/login" method="post" name="logar" id="logar" class="login-form">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email" required />
+
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" required />
+
+            <input type="submit" id="entrar" name="entrar" value="ENTRAR" class="btn">
+        </form>
+        <p>Não possui Login? <a href="/cadastrar">Cadastre-se</a></p> 
+    </main>
+    <p><a href="/dashboard">Voltar</a></p>
+    <footer>
+        <p>&copy; 2024 Meu Projeto de Livros</p>
+    </footer>
+</body>
+</html>

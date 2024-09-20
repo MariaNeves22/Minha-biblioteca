@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+</head>
+<body>
+    <header>
+        <img src="/uploads/logo.png" alt="Logo do Projeto" class="logo" />
+        <h2>Painel de Administração</h2>
+    </header>
+    <main>
+        <nav>
+            <a href="/add-livro" class="btn">Cadastrar Novo Livro</a>
+            <a href="/livros" class="btn">Visualizar Livros Cadastrados</a>
+        </nav>
+
+        <h3>Usuários Cadastrados</h3>
+        
+        <input type="text" id="searchInput" placeholder="Pesquisar Usuários..." onkeyup="searchUsers()" />
+        
+        <table class="user-table" id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Gênero Favorito</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.id_usuario %></td>
+                    <td><%= user.nome %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.genero_fav %></td>
+                    <td>
+                        <a href="/edit/<%= user.id_usuario %>" class="btn-action">Editar</a>
+                        <form action="/delete/<%= user.id_usuario %>" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                            <button type="submit" class="btn-action">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <br/>
+        <a href="/logout" class="btn">Logout</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 Meu Projeto de Livros</p>
+    </footer>
+    <script src="/js/scriptDel.js"></script>
+    <script>
+        function searchUsers() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('userTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) { 
+                const td = tr[i].getElementsByTagName('td');
+                let match = false;
+
+                for (let j = 0; j < td.length; j++) {
+                    if (td[j] && td[j].textContent.toLowerCase().includes(filter)) {
+                        match = true;
+                        break;
+                    }
+                }
+                tr[i].style.display = match ? '' : 'none';
+            }
+        }
+    </script>
+</body>
+</html>
